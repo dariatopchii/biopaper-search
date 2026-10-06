@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "biopaper-search"
+version = "0.1.0"
+description = "Biomedical literature retrieval with measured ranking quality"
+requires-python = ">=3.11"
+dependencies = ["numpy>=1.26,<3", "sentence-transformers>=3,<6", "streamlit>=1.40,<2"]
+
+[tool.setuptools.packages.find]
+where = ["src"]

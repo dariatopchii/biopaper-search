@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.egg-info/
+.cache/
+data/papers.jsonl
+data/corpus_manifest.json
+artifacts/
+evaluation/judgments.jsonl
+evaluation/pool.jsonl
+evaluation/reports/
