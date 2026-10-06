@@ -1,12 +1,14 @@
 # BioPaper Search
 
+[![Tests](https://github.com/dariatopchii/biopaper-search/actions/workflows/tests.yml/badge.svg)](https://github.com/dariatopchii/biopaper-search/actions/workflows/tests.yml)
+
 A biomedical literature search and preference-learning experiment by Daria Topchii, an Informatics master's student at LMU Munich with a background in molecular biotechnology.
 
 **Research question:** can a lightweight ranker learn from a small number of human relevance judgments and improve biomedical search over keyword retrieval and pretrained semantic models?
 
 **Status:** the retrieval app and preference-learning pipeline are implemented. Human annotations and quality results are pending. No improvement is claimed yet.
 
-[Experiment protocol](docs/EXPERIMENT.md) · [Milestones](docs/ROADMAP.md) · [Progress log](docs/PROGRESS.md)
+[Experiment protocol](docs/EXPERIMENT.md) · [Roadmap](docs/ROADMAP.md) · [Progress log](docs/PROGRESS.md) · [Tracked tasks](https://github.com/dariatopchii/biopaper-search/issues) · [GitHub milestones](https://github.com/dariatopchii/biopaper-search/milestones)
 
 ## Idea and approach
 
@@ -84,11 +86,11 @@ Keep corpus_manifest.json and evaluation settings with experiment outputs. Depen
 
 To recreate the tested package versions, install `requirements-lock.txt` first, then install this project with `pip install -e . --no-deps`. The lock excludes the machine-specific editable project path.
 
-## Validation of the first version
+## Software validation
 
-Tested locally on 6 October 2026: five unit tests passed; all three retrieval methods returned results on a 300-abstract corpus; Streamlit's application test completed a three-method search with 15 result cards and no application exceptions. A blinded review pool contains 601 distinct query-paper pairs for the 30 questions. These checks confirm functioning software, not retrieval quality. No human relevance labels or quality benchmark results have been fabricated.
+Tested locally on 6 October 2026: **13 automated tests passed**, covering ranking metrics, review behavior, preference learning, query-disjoint learning curves, and unjudged-result pool expansion. Real-corpus feature extraction produced 300 × 3 finite values. The experiment pipeline tests use synthetic fixtures; biomedical quality evaluation still requires human annotations.
 
-The updated workflow passes nine tests, including isolated UI checks that prevent accidental default ratings and verify saving and automatic progression. All three retrieval modes also pass an offline smoke check using the downloaded model cache. The application loads cached models locally first, avoiding unnecessary online checks during repeat use.
+All three retrieval methods returned results on a 300-abstract corpus and passed an offline smoke check. Streamlit's application test completed a three-method search with 15 result cards and no application exceptions. The initial blinded pool contains 601 distinct query-paper pairs for 30 questions. These checks verify functioning software, not retrieval quality; no benchmark improvement has been fabricated.
 
 The query uses open-access articles, but open access alone does not grant uniform redistribution rights. Download data locally; check each article's licence before publishing abstracts. Corpus, model files, judgments, and reports are ignored by Git. Always display source attribution. This tool retrieves literature and does not generate medical recommendations.
 
